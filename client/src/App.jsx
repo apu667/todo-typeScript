@@ -6,7 +6,7 @@ const App = () => {
   const [todos, setTodos] = useState("");
   const [isEditing, setEditing] = useState(false);
   const [editingTodoId, setEditingTodoId] = useState(null);
-  const baseUri="https://todo-typescript-zo5v.onrender.com";
+  const baseUri = "http://localhost:5050";
   // Fetch all todos
   const getTodos = async () => {
     try {
@@ -87,8 +87,10 @@ const App = () => {
         </div>
 
         <div className="space-y-2">
-          {todosArray.length > 0 ? (
-            todosArray.map((t) => (
+          {todosArray?.length === 0 ? (
+            <p className="text-center text-gray-400">No todos found</p>
+          ) : (
+            todosArray?.map((t) => (
               <div
                 key={t._id}
                 className="flex items-center justify-between bg-white rounded-2xl py-2 px-4 text-black"
@@ -110,8 +112,6 @@ const App = () => {
                 </div>
               </div>
             ))
-          ) : (
-            <p className="text-center text-gray-400">No todos found</p>
           )}
         </div>
       </div>
