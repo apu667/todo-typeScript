@@ -6,7 +6,7 @@ const App = () => {
   const [todos, setTodos] = useState("");
   const [isEditing, setEditing] = useState(false);
   const [editingTodoId, setEditingTodoId] = useState(null);
-  const baseUri = "http://localhost:5050";
+  const baseUri = "https://todo-typescript-r5bq.onrender.com";
   // Fetch all todos
   const getTodos = async () => {
     try {
