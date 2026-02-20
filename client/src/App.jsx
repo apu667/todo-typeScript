@@ -6,11 +6,11 @@ const App = () => {
   const [todos, setTodos] = useState("");
   const [isEditing, setEditing] = useState(false);
   const [editingTodoId, setEditingTodoId] = useState(null);
-
+  const baseUri="https://todo-typescript-v55w.onrender.com"
   // Fetch all todos
   const getTodos = async () => {
     try {
-      const res = await axios.get("http://localhost:5050/todos/AllTodo");
+      const res = await axios.get(`${baseUri}/todos/AllTodo`);
       setTodosArray(res.data.allTodos);
     } catch (error) {
       console.log(error);
@@ -27,7 +27,7 @@ const App = () => {
     if (!todos.trim()) return alert("Please enter a todo");
 
     try {
-      const baseUrl = "http://localhost:5050/todos";
+      const baseUrl = `${baseUri}/todos`;
       let res;
 
       if (isEditing) {
@@ -60,7 +60,7 @@ const App = () => {
   // Delete todo
   const deleteTodo = async (id) => {
     try {
-      await axios.delete(`http://localhost:5050/todos/delete/${id}`);
+      await axios.delete(`${baseUri}/todos/delete/${id}`);
       getTodos();
     } catch (error) {
       console.log(error);
